@@ -1,0 +1,31 @@
+﻿@*@model IEnumerable<fitapp.ViewModels.HomeViewModel>*@
+@model fitapp.ViewModels.HomeViewModel
+
+    <table id="product-values-table">
+        <tr>
+            <th>Nazwa produktu</th>
+            <th>Kalorie</th>
+            <th>Białka</th>
+            <th>Węglowodany</th>
+            <th>Tłuszcze</th>
+        </tr>
+
+        @foreach (var products in Model.Products)
+        {
+            <tr>
+                <td>@products.Name</td>
+                <td>@products.Kcal</td>
+                <td>@products.Proteins</td>
+                <td>@products.Carbohydrates</td>
+                <td>@products.Fats</td>
+            </tr>
+        }
+        @*<tr>
+            <td>Jajo</td>
+            <td>60</td>
+            <td>12</td>
+            <td>1</td>
+            <td>10</td>
+        </tr>*@
+    </table>
+

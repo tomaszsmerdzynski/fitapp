@@ -1,0 +1,40 @@
+﻿@model PagedList.IPagedList<fitapp.Models.Product>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "ProductsList";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<h2>Pełna lista produktów</h2>
+
+<div class="info">
+    Wartości odżywcze produktu podane są w gramach(g) na 100g danego produktu.<br>
+    Wartośc kaloryczna produktu podana jest w kilokaloriach(kcal) na 100g danego produktu.
+</div>
+
+<table class="product-values-table">
+    <tr>
+        <th>Nazwa produktu</th>
+        <th>Kalorie</th>
+        <th>Białka</th>
+        <th>Węglowodany</th>
+        <th>Tłuszcze</th>
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Kcal</td>
+            <td>@product.Proteins</td>
+            <td>@product.Carbohydrates</td>
+            <td>@product.Fats</td>
+        </tr>
+    }
+</table>
+
+<div id="pagination">
+    Strona @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) z @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("ProductsList", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

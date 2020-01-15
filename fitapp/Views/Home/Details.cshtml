@@ -1,0 +1,30 @@
+﻿@model fitapp.Models.Product
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<h2>Wartości odżywcze produktu</h2>
+
+<div class="info">
+    Wartości odżywcze produktu podane są w gramach(g) na 100g danego produktu.<br>
+    Wartośc kaloryczna produktu podana jest w kilokaloriach(kcal) na 100g danego produktu.
+</div>
+
+<table class="product-values-table">
+    <tr>
+        <th>Nazwa produktu</th>
+        <th>Kalorie</th>
+        <th>Białka</th>
+        <th>Węglowodany</th>
+        <th>Tłuszcze</th>
+    </tr>
+    <tr>
+        <td>@Model.Name</td>
+        <td>@Model.Kcal</td>
+        <td>@Model.Proteins</td>
+        <td>@Model.Carbohydrates</td>
+        <td>@Model.Fats</td>
+    </tr>
+</table>
+

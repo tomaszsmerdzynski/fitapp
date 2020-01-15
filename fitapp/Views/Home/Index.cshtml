@@ -1,0 +1,54 @@
+﻿@model IEnumerable<fitapp.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<h2>Baza produktów</h2>
+
+<div class="link">
+    <a href="@Url.Action("ProductsList")">Zobacz pełną bazę</a>
+</div>
+
+<form id="search-form" method="get" action="@Url.Action("Search")">
+    <input id="search-filter" type="search" name="searchQuery"
+           data-autocomplete-source="@Url.Action("ProductsSuggestions")"
+           placeholder="Szukaj..." />
+    <input id="search-button" type="submit" value="Szukaj w bazie" />
+</form>
+
+
+@*<div id="product-details">
+        @Html.Partial("_ProductDetails")
+    </div>*@
+
+@section ScriptsBottom
+{
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery")
+    @System.Web.Optimization.Scripts.Render("~/bundles/jqueryui")
+
+    <script>
+        $(function () {
+            var setupAutoComplete = function () {
+                var $input = $(this);
+
+                var options = {
+                    source: $input.attr("data-autocomplete-source"),
+                    select: function (event, ui) {
+                        $input = $(this);
+                        $input.val(ui.item.label);
+                        var $form = $input.parents("form:first");
+                        $form.submit();
+                    }
+                };
+
+                $input.autocomplete(options);
+            };
+
+            $("#search-filter").each(setupAutoComplete);
+
+        });
+
+
+    </script>
+}

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<fitapp.Models.Product>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<h2>Wartości odżywcze produktu</h2>
+
+<div class="info">
+    Wartości odżywcze produktu podane są w gramach(g) na 100g danego produktu.<br>
+    Wartośc kaloryczna produktu podana jest w kilokaloriach(kcal) na 100g danego produktu.
+</div>
+
+<table class="product-values-table">
+    <tr>
+        <th>Nazwa produktu</th>
+        <th>Kalorie</th>
+        <th>Białka</th>
+        <th>Węglowodany</th>
+        <th>Tłuszcze</th>
+    </tr>
+    @foreach (var product in Model)
+    {
+        <tr>
+            <td>@product.Name</td>
+            <td>@product.Kcal</td>
+            <td>@product.Proteins</td>
+            <td>@product.Carbohydrates</td>
+            <td>@product.Fats</td>
+        </tr>
+    }
+</table>

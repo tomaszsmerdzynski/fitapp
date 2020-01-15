@@ -1,0 +1,83 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+    Layout = null;
+    ViewBag.Title = "fitapp";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="@Url.Content("~/Content/Images/favicon.ico")" type="image/x-icon" />
+    <title>@ViewBag.Title</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="@Url.Content("~/Content/Style.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/ProductsList.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Account.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Navbar.css")" type="text/css" />
+    @System.Web.Optimization.Styles.Render("~/Content/themes/base/css")
+</head>
+<body>
+    <nav id="top-nav">
+        <div id="top-logo">
+            <h1>fitapp</h1>
+        </div>
+        
+        <ul id="top-menu">
+            <li class="item"><a href="@Url.Action("StaticContent", "Home", new { viewname = "Index" }, null)">Baza produktów</a></li>
+            <li class="item"><a href="@Url.Action("StaticContent", "Home", new { viewname = "Kalkulator" }, null)">Kalkulator</a></li>
+            <li class="item"><a href="@Url.Action("StaticContent", "Home", new { viewname = "Dieta" }, null)">Dieta</a></li>
+        </ul>
+
+        <ul id="top-login-menu">
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <li>
+                        @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { id = "profile-link" })
+                    </li>
+                    <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                    </li>
+                }
+            }
+            else
+            {
+                <li>
+                    @Html.ActionLink("Logowanie", "Login", "Account", routeValues: null, htmlAttributes: null)
+                </li>
+                <li>
+                    @Html.ActionLink("Rejestracja", "Register", "Account", routeValues: null, htmlAttributes: null)
+                </li>
+            }
+        </ul>
+    </nav>
+
+    <header class="banner">
+        <img src="@Url.Content("~/Content/Images/banner_v5.png")" />
+    </header>
+
+    @*<div class="sidebar">
+            <p>LEWA STRONA</p>
+        </div>*@
+
+    <div class="content">
+        @RenderBody()
+    </div>
+
+    <footer class="footer">
+        <p>
+            FITAPP - praca inżynierska. Created by: Tomasz Smerdzyński
+        </p>
+    </footer>
+
+    @RenderSection("ScriptsBottom", required: false)
+
+</body>
+</html>

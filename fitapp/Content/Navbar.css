@@ -1,0 +1,66 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#top-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 5%;
+    min-width: 100%;
+    min-height: 8vh;
+    font-family: 'Roboto', sans-serif;
+    background-color: seagreen;
+}
+
+#top-logo {
+    margin-right: auto;
+    padding: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    font-size: 24px;
+    color: blanchedalmond;
+}
+
+#top-menu {
+    list-style: none;
+    padding: 3vh 20px;
+}
+
+    #top-menu li {
+        display: inline-block;
+        padding: 0 20px;
+    }
+
+    #top-menu li a {
+        text-decoration: none;
+        letter-spacing: 3px;
+        font-size: 16px;
+        color: blanchedalmond;
+        cursor: pointer;
+    }
+
+.item {
+
+}
+
+#top-login-menu {
+    text-decoration: none;
+    padding: 3vh 20px;
+    background-color: #257147 /*#303030*/;
+}
+
+    #top-login-menu li {
+        display: inline-block;
+        padding: 0 20px;
+    }
+
+    #top-login-menu li a {
+        text-decoration: none;
+        letter-spacing: 3px;
+        font-size: 16px;
+        color: blanchedalmond;
+        cursor: pointer;
+    }

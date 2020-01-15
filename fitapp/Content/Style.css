@@ -1,0 +1,148 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: seagreen;
+}
+
+.banner {
+    min-width: 100%;
+    height: 300px;
+}
+
+    .banner img {
+        width: 100%;
+        height: 300px;
+        /*border-top: 1px solid dimgray;
+        border-bottom: 1px solid dimgray;*/
+    }
+
+/*.sidebar {
+    float: left;
+    width: 15%;
+    min-height: 40%;
+    padding: 40px 40px 40px 40px;
+    text-align: center;
+    font-size: 18px;
+    background-color: cadetblue;
+    border-right: 2px dotted #808080;
+}*/
+
+.content {
+    float: left;
+    width: 100%;
+    min-height: 55%;
+    padding: 40px 40px 40px 40px;
+    text-align: center;
+    background-color: blanchedalmond;
+}
+
+.footer {
+    clear: both;
+    width: 100%;
+    text-align: center;
+    padding: 0.5em 0 0.5em 0;
+    font-size: 14px;
+    color: blanchedalmond;
+}
+
+#search-form {
+    padding: 40px 40px 40px 40px;
+}
+
+    /*STYLE LINKÓW*/
+.link {
+    padding: 20px 20px 20px 20px
+}
+
+    .link a {
+        text-decoration: none;
+        color: maroon;
+        cursor: pointer;
+    }
+
+        .link a:hover {
+            text-decoration: none;
+        }
+
+.info {
+    padding: 20px 40px 40px 40px
+}
+
+#product-details {
+    text-decoration: none;
+    font-family: 'Lato', sans-serif;
+}
+
+/*STYLE WYSZUKIWARKI*/
+#search-filter {
+    text-decoration: none;
+    height: 3em;
+    width: 21em;
+    padding: 0 0 0 1em;
+    border: 1px solid black;
+    border-radius: 0.7em;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    background-color: antiquewhite;
+}
+
+#search-button {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    height: 3em;
+    width: 12em;
+    /*margin: 0 0.2em 0.2em 0;*/
+    border: 1px solid black;
+    border-radius: 0.7em;
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: black;
+    background-color: seagreen;
+    cursor: pointer;
+}
+
+    #search-button:hover {
+        color: antiquewhite;
+        border-color: antiquewhite;
+    }
+
+    /*STYLE DO ZARZĄDZANIA WYGLĄDEM WYSUWANEJ LISTY Z PODPOWIEDZIAMI WYSZUKIWANIA*/
+#ui-id-1 {
+    text-decoration: none;
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    border: 1px solid black !important;
+    border-radius: 0.7em;
+    color: black;
+    background-color: antiquewhite;
+}
+
+    #ui-id-1:hover {
+        text-decoration: none !important;
+        padding: 0.5em 0.5em 0.5em 0.5em;
+        color: black !important;
+        background-color: antiquewhite !important;
+    }
+
+.ui-state-active, .ui-menu-item, .ui-menu-item:hover, .ui-menu-item-wrapper:hover, .ui-widget-content, a.ui-button:active, .ui-button:active, .ui-button:hover {
+    text-decoration: none !important;
+    background-color: antiquewhite !important;
+    color: dimgray /*!important*/;
+    font-size: 16px !important;
+    border: none !important;
+}
+
+.ui-state-active {
+    color: black !important;
+}
