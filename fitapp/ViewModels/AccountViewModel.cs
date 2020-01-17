@@ -36,4 +36,9 @@ namespace fitapp.ViewModels
         [Compare("Password", ErrorMessage = "Hasło nie pasuje")]
         public string ConfirmPassword { get; set; }
     }
+
+    public class UserViewModel
+    {
+
+    }
 }

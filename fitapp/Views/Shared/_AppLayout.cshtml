@@ -32,7 +32,7 @@
             <li class="item"><a href="@Url.Action("StaticContent", "Home", new { viewname = "Dieta" }, null)">Dieta</a></li>
         </ul>
 
-        <ul id="top-login-menu">
+        <ul id="top-user-menu">
             @if (Request.IsAuthenticated)
             {
                 using (Html.BeginForm("Logoff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
@@ -41,10 +41,17 @@
 
                     <li>
                         @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { id = "profile-link" })
+                        <ul id="dropdown-user-menu">
+                            <li><a href="#">@Html.ActionLink("UserProfile", "Account")Mój profil</a></li>
+                            <li><a href="#">Edytuj dane</a></li>
+                            <li>
+                                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
+                            </li>
+                        </ul>
                     </li>
-                    <li>
+                    @*<li>
                         <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
-                    </li>
+                    </li>*@
                 }
             }
             else

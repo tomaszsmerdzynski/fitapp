@@ -21,7 +21,7 @@
                     @Html.LabelFor(o => o.Email, "E-mail: ")
                 </td>
                 <td>
-                    @Html.TextBoxFor(o => o.Email, new { Class = "textbox" })
+                    @Html.TextBoxFor(o => o.Email, new { Class = "textbox", })
                     <div class="login-validation-message">
                         @Html.ValidationMessageFor(o => o.Email)
                     </div>

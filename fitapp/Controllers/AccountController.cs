@@ -121,6 +121,16 @@ namespace fitapp.Controllers
                 ModelState.AddModelError("", error);
             }
         }
+        //public ActionResult UserProfile(string name)
+        //{
+        //    return View(name);
+        //}
+
+        //public ActionResult UserProfile(ApplicationUserManager userManager)
+        //{
+        //    _userManager = userManager;
+        //    return View(userManager);
+        //}
 
         public ActionResult LogOff()
         {

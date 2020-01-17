@@ -13,7 +13,8 @@ namespace fitapp.DAL
         //Konstruktor DbContext z Entity Framework - parametr to nazwa connection stringa
         public FitappDbContext() : base("FitappDbContext")
         {
-
+            // WYLACZENIE INICJALIZATORA
+            Database.SetInitializer<FitappDbContext>(null);
         }
 
         static FitappDbContext()

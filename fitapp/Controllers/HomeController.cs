@@ -33,7 +33,7 @@ namespace fitapp.Controllers
         // PRODUCT SUGGESTIONS
         public ActionResult ProductsSuggestions(string term)
         {
-            var products = this.db.Products.Where(p => p.Name.ToLower().StartsWith(term.ToLower())).Take(5).Select(p => new { label = p.Name });
+            var products = this.db.Products.Where(p => p.Name.ToLower().StartsWith(term.ToLower())).Take(10).Select(p => new { label = p.Name });
 
             return Json(products, JsonRequestBehavior.AllowGet);
         }
@@ -57,7 +57,7 @@ namespace fitapp.Controllers
             var products = db.Products.ToList();
 
             int pageNumber = (page ?? 1);
-            int productsOnPage = 10;
+            int productsOnPage = 20;
             
             return View(products.ToPagedList(pageNumber, productsOnPage));
         }

@@ -15,9 +15,21 @@
     background-color: seagreen;
 }
 
+    #top-nav a {
+        display: block;
+        height: 8vh;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        transition: background 0.4s;
+    }
+
+        #top-nav a:hover {
+            background-color: #54a075;
+        }
+
 #top-logo {
     margin-right: auto;
-    padding: 10px 0;
     text-transform: uppercase;
     letter-spacing: 7px;
     font-size: 24px;
@@ -26,41 +38,58 @@
 
 #top-menu {
     list-style: none;
-    padding: 3vh 20px;
+    display: flex;
 }
 
     #top-menu li {
         display: inline-block;
-        padding: 0 20px;
+        position: relative;
     }
 
-    #top-menu li a {
-        text-decoration: none;
-        letter-spacing: 3px;
-        font-size: 16px;
-        color: blanchedalmond;
-        cursor: pointer;
-    }
+        #top-menu li a {
+            text-decoration: none;
+            letter-spacing: 3px;
+            font-size: 16px;
+            color: blanchedalmond;
+            cursor: pointer;
+        }
 
-.item {
-
-}
-
-#top-login-menu {
+#top-user-menu {
+    list-style: none;
+    display: flex;
     text-decoration: none;
-    padding: 3vh 20px;
-    background-color: #257147 /*#303030*/;
+    background-color: #1d5837 /*#303030*/;
 }
 
-    #top-login-menu li {
+    #top-user-menu li {
         display: inline-block;
-        padding: 0 20px;
+        position: relative;
     }
 
-    #top-login-menu li a {
-        text-decoration: none;
-        letter-spacing: 3px;
-        font-size: 16px;
-        color: blanchedalmond;
-        cursor: pointer;
+        #top-user-menu li a {
+            text-decoration: none;
+            letter-spacing: 3px;
+            font-size: 16px;
+            color: blanchedalmond;
+            cursor: pointer;
+        }
+
+        #top-user-menu li:hover #dropdown-user-menu > li {
+            display: block;
+            top: 0px;
+        }
+
+#dropdown-user-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+}
+
+    #dropdown-user-menu li {
+        display: none;
+        position: relative;
+        top: 0px;
+        background-color: seagreen;
+        opacity: 0.85;
     }

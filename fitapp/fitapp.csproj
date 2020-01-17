@@ -187,6 +187,10 @@
     <Compile Include="Migrations\202001132328599_AddedAspNetIdentity.designer.cs">
       <DependentUpon>202001132328599_AddedAspNetIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001160129539_AddUserProperties.cs" />
+    <Compile Include="Migrations\202001160129539_AddUserProperties.designer.cs">
+      <DependentUpon>202001160129539_AddUserProperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Product.cs" />
@@ -297,6 +301,7 @@
     <Content Include="Views\Home\ProductsList.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001022019580_InitialCreate.resx">
@@ -304,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001132328599_AddedAspNetIdentity.resx">
       <DependentUpon>202001132328599_AddedAspNetIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001160129539_AddUserProperties.resx">
+      <DependentUpon>202001160129539_AddUserProperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

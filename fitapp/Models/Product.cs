@@ -20,7 +20,5 @@ namespace fitapp.Models
         public double Carbohydrates { get; set; }
 
         public double Fats { get; set; }
-
-        //public IEnumerable<Product> ProductsList { get; set; }
     }
 }

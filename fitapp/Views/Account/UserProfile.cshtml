@@ -1,0 +1,18 @@
+﻿@model fitapp.Models.UserData
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<h2>Mój Profil</h2>
+
+<div>
+    @Model.Email<br />
+    @Model.Age<br />
+    @Model.Weight<br />
+    @Model.Height<br />
+    @Model.Gender<br />
+    @Model.PhysicalActivity<br />
+    @Model.BMR<br />
+</div>
+
