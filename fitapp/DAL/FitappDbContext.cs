@@ -28,5 +28,7 @@ namespace fitapp.DAL
         }
 
         public DbSet<Product> Products { get; set; }
+
+        //public DbSet<UserData> UserData { get; set; }
     }
 }

@@ -14,6 +14,12 @@ namespace fitapp
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Index",
+                url: "UserProfile",
+                defaults: new { controller = "Profile", action = "Index"}
+            );
+
+            routes.MapRoute(
                 name: "Search",
                 url: "produkt-{id}",
                 defaults: new { controller = "Home", action = "Search"}

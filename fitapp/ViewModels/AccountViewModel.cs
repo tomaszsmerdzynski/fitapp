@@ -10,9 +10,12 @@ namespace fitapp.ViewModels
     {
         [Required(ErrorMessage = "Musisz wprowadzić e-mail")]
         [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Musisz wprowadzić hasło")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Hasło")]
         public string Password { get; set; }
 
         [Display(Name = "Zapamiętaj mnie")]
@@ -33,12 +36,8 @@ namespace fitapp.ViewModels
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Compare("Password", ErrorMessage = "Hasło nie pasuje")]
+        [Display(Name = "Potwierdź hasło")]
+        [Compare("Password", ErrorMessage = "Podane hasła się różnią")]
         public string ConfirmPassword { get; set; }
-    }
-
-    public class UserViewModel
-    {
-
     }
 }

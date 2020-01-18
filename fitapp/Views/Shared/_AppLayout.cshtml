@@ -40,10 +40,14 @@
                     @Html.AntiForgeryToken()
 
                     <li>
-                        @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { id = "profile-link" })
+                        @* POPRAWIC / ZLA TRASA *@
+                        @Html.ActionLink(User.Identity.GetUserName(), "Index", "Profile", routeValues: null, htmlAttributes: new { title = "Profile" })
                         <ul id="dropdown-user-menu">
-                            <li><a href="#">@Html.ActionLink("UserProfile", "Account")Mój profil</a></li>
-                            <li><a href="#">Edytuj dane</a></li>
+                            <li>
+                                @*@Html.ActionLink("Edytuj profil", "Index", "Profile", routeValues: null, htmlAttributes: null)*@
+                                <a href="@Url.Action("Index", "Profile")">Edytuj profil</a>
+                            </li>
+                            <li><a href="#">Moje posiłki</a></li>
                             <li>
                                 <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
                             </li>

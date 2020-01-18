@@ -1,5 +1,6 @@
 ﻿using fitapp.App_Start;
 using fitapp.ViewModels;
+using fitapp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,8 @@ using System.Web.Mvc;
 using Microsoft.Owin.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
-using fitapp.Models;
 using System.Threading.Tasks;
+using fitapp.DAL;
 
 namespace fitapp.Controllers
 {
@@ -56,6 +57,7 @@ namespace fitapp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
@@ -94,6 +96,7 @@ namespace fitapp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -118,12 +121,17 @@ namespace fitapp.Controllers
         {
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError("", error);
+                ModelState.AddModelError("register-error", error);
             }
         }
-        //public ActionResult UserProfile(string name)
+
+        //public ActionResult UserProfile(UserViewModel user)
         //{
-        //    return View(name);
+        //    // poprawic na to zeby pobieralo z bazy essasito
+        //    var userProfile = new UserViewModel { Email = User.Identity.GetUserName(), Age = 12, Height = 183, Weight = 80, Gender = 'M', BMR = 3201, PhysicalActivity = 1 };
+
+        //    //var userInfo = user.Email
+        //    return View(userProfile);
         //}
 
         //public ActionResult UserProfile(ApplicationUserManager userManager)
@@ -132,6 +140,8 @@ namespace fitapp.Controllers
         //    return View(userManager);
         //}
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();

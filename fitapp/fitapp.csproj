@@ -173,6 +173,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="DAL\FitappDbContext.cs" />
     <Compile Include="DAL\FitappDbInitializer.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs" />
@@ -191,6 +192,14 @@
     <Compile Include="Migrations\202001160129539_AddUserProperties.designer.cs">
       <DependentUpon>202001160129539_AddUserProperties.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001181726243_ChangedUserDataProperties.cs" />
+    <Compile Include="Migrations\202001181726243_ChangedUserDataProperties.designer.cs">
+      <DependentUpon>202001181726243_ChangedUserDataProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001181747405_ChangedUserDataPropertiesCD.cs" />
+    <Compile Include="Migrations\202001181747405_ChangedUserDataPropertiesCD.designer.cs">
+      <DependentUpon>202001181747405_ChangedUserDataPropertiesCD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Product.cs" />
@@ -199,6 +208,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Account.css" />
@@ -301,7 +311,7 @@
     <Content Include="Views\Home\ProductsList.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202001022019580_InitialCreate.resx">
@@ -312,6 +322,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001160129539_AddUserProperties.resx">
       <DependentUpon>202001160129539_AddUserProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001181726243_ChangedUserDataProperties.resx">
+      <DependentUpon>202001181726243_ChangedUserDataProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001181747405_ChangedUserDataPropertiesCD.resx">
+      <DependentUpon>202001181747405_ChangedUserDataPropertiesCD.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

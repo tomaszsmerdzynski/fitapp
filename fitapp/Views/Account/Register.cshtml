@@ -6,7 +6,7 @@
 
 <h2>Rejestracja</h2>
 
-<div class="login-form">
+<div class="form-container">
     @using (Html.BeginForm("Register", "Account"))
     {
         @Html.AntiForgeryToken()
@@ -16,7 +16,7 @@
             @Html.ValidationSummary()
         </div>
 
-        <table class="login-table">
+        <table class="form-table">
             <tr>
                 <td>
                     @Html.LabelFor(o => o.Email, "E-mail: ")
@@ -33,7 +33,7 @@
                     @Html.LabelFor(o => o.Password, "Hasło: ")
                 </td>
                 <td>
-                    @Html.TextBoxFor(o => o.Password, new { Class = "textbox" })
+                    @Html.PasswordFor(o => o.Password, new { Class = "textbox", Textmode = "Password" })
                     <div class="login-validation-message">
                         @Html.ValidationMessageFor(o => o.Password)
                     </div>
@@ -45,7 +45,7 @@
                     @Html.LabelFor(o => o.ConfirmPassword, "Potwierdź hasło: ")
                 </td>
                 <td>
-                    @Html.TextBoxFor(o => o.ConfirmPassword, new { Class = "textbox" })
+                    @Html.PasswordFor(o => o.ConfirmPassword, new { Class = "textbox", Textmode = "Password" })
                     <div class="login-validation-message">
                         @Html.ValidationMessageFor(o => o.ConfirmPassword)
                     </div>

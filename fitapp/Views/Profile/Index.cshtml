@@ -1,0 +1,101 @@
+﻿@model fitapp.ViewModels.ProfileCredentialsViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<h2>Profil Użytkownika</h2>
+
+@{
+    var genders = new SelectList(
+        new List<SelectListItem>
+        {
+            new SelectListItem {Selected = true, Text = "Kobieta", Value = "Female"},
+            new SelectListItem {Selected = false, Text = "Mężczyzna", Value = "Male"},
+        }, "Value", "Text");
+
+    var physicalActivityLevel = new SelectList(
+        new List<SelectListItem>
+        {
+            new SelectListItem {Selected = true, Text = "Brak", Value = "None"},
+            new SelectListItem {Selected = false, Text = "Niska aktywność", Value = "Low"},
+            new SelectListItem {Selected = false, Text = "Średnia aktywność", Value = "Medium"},
+            new SelectListItem {Selected = false, Text = "Wysoka aktywność", Value = "High"},
+            new SelectListItem {Selected = false, Text = "Bardzo wysoka aktywność", Value = "VeryHigh"},
+        }, "Value", "Text");
+}
+
+@using (@Html.BeginForm("EditProfile", "Profile"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-container">
+        <table class="form-table">
+            <tr>
+                <td>@Html.LabelFor(o => o.UserData.Email, "Email:")</td>
+                <td>@Html.TextBoxFor(o => o.UserData.Email, new { Class = "textbox" })</td>
+                <td>@Html.ValidationMessageFor(o => o.UserData.Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(o => o.UserData.Age, "Wiek:")</td>
+                <td>@Html.TextBoxFor(o => o.UserData.Age, new { Class = "textbox" })</td>
+                <td>@Html.ValidationMessageFor(o => o.UserData.Age)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(o => o.UserData.Height, "Wzrost:")</td>
+                <td>@Html.TextBoxFor(o => o.UserData.Height, new { Class = "textbox" })</td>
+                <td>@Html.ValidationMessageFor(o => o.UserData.Height)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(o => o.UserData.Weight, "Waga:")</td>
+                <td>@Html.TextBoxFor(o => o.UserData.Weight, new { Class = "textbox" })</td>
+                <td>@Html.ValidationMessageFor(o => o.UserData.Weight)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(o => o.UserData.Gender, "Płeć:")</td>
+                <td>@Html.DropDownListFor(o => o.UserData.Gender, genders, new { Class = "dropdown-list" }) </td>
+                <td>@Html.ValidationMessageFor(o => o.UserData.Gender)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.UserData.PhysicalActivity, "Aktywność fizyczna:")</td>
+                <td>@Html.DropDownListFor(o => o.UserData.PhysicalActivity, physicalActivityLevel, new { Class = "dropdown-list" })</td>
+                <td>@Html.ValidationMessageFor(o => o.UserData.PhysicalActivity)</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="padding: 2.5em 0 0 0">
+                    <input type="submit" value="Zatwierdź zmiany" class="submit-link" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+<h1>Zmiana hasła</h1>
+
+@*@using (Html.BeginForm("ChangePassword", "Profile", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="manage-error">
+            @Html.ValidationMessage("password-error", "")
+        </div>
+
+        if (Model.Message.HasValue)
+        {
+            <div class="manage-message">
+                @switch (Model.Message)
+                {
+                    case fitapp.Controllers.ProfileController.ManageMessageId.ChangePasswordSuccess:
+                        @: Hasło zostało zmienione pomyślnie!
+                        break;
+                    case fitapp.Controllers.ProfileController.ManageMessageId.SetPasswordSuccess:
+                        @: Hasło zostało dodane pomyślnie!
+                        break;
+                    case fitapp.Controllers.ProfileController.ManageMessageId.Error:
+                        @: Wystąpił błąd
+                        break;
+
+                }
+            </div>
+        }
+    }*@

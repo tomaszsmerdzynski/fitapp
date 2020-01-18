@@ -14,8 +14,8 @@ namespace fitapp.Models
         public int Age { get; set; }
         public double Height { get; set; }
         public double Weight { get; set; }
-        public int PhysicalActivity { get; set; }
-        public char Gender { get; set; }
+        public string PhysicalActivity { get; set; }
+        public string Gender { get; set; }
         public double BMR { get; set; }
     }
 }

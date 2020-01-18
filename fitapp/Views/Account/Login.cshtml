@@ -6,7 +6,7 @@
 
 <h2>Logowanie</h2>
 
-<div class="login-form">
+<div class="form-container">
     @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
     {
         @Html.AntiForgeryToken()
@@ -15,13 +15,13 @@
             @Html.ValidationMessage("loginerror", "")
         </div>
 
-        <table class="login-table">
+        <table class="form-table">
             <tr>
                 <td>
                     @Html.LabelFor(o => o.Email, "E-mail: ")
                 </td>
                 <td>
-                    @Html.TextBoxFor(o => o.Email, new { Class = "textbox", })
+                    @Html.TextBoxFor(o => o.Email, new { Class = "textbox" })
                     <div class="login-validation-message">
                         @Html.ValidationMessageFor(o => o.Email)
                     </div>
@@ -32,7 +32,7 @@
                     @Html.LabelFor(o => o.Password, "Hasło: ")
                 </td>
                 <td>
-                    @Html.TextBoxFor(o => o.Password, new { Class = "textbox" })
+                    @Html.PasswordFor(o => o.Password, new { Class = "textbox", Textmode = "Password" })
                     <div class="login-validation-message">
                         @Html.ValidationMessageFor(o => o.Password)
                     </div>
