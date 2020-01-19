@@ -10,7 +10,7 @@
     margin: 0 auto;
     border: none;
     border-collapse: collapse;
-    border-radius: 0.7em;
+    /*border-radius: 0.7em;*/
 }
     .product-values-table th {
         font-size: 18px;

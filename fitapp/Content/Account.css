@@ -7,21 +7,23 @@
 .form-container {
     /*margin-left: auto !important;
     margin-right: auto !important;*/
-    padding: 1em 0 1em 0;
+    /*padding: 1em 0 1em 0;*/
 }
 
 .form-table {
     margin-left: auto !important;
     margin-right: auto !important;
-    padding-top: 1em;
+    /*padding-top: 1em;*/
 }
 
-    /*.login-table tr {
-
-    }*/
+    .form-table th {
+        text-decoration: none;
+        text-align: right;
+        font-weight: normal;
+    }
 
     .form-table td {
-        padding: 0 5px 0 5px;
+        padding: 0 5px 0 10px;
     }
 
 .textbox {
@@ -78,4 +80,49 @@
     color: red;
     font-size: 12px;
     padding: 0;
+}
+
+.user-header {
+    padding: 30px 0;
+}
+
+.user-data-table-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.user-data-table {
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 18px;
+}
+
+    .user-data-table tr {
+        padding: 10px;
+    }
+
+    .user-data-table th {
+        text-align: right;
+        font-weight: normal;
+        padding: 0 1em;
+        background-color: navajowhite;
+    }
+
+    .user-data-table td {
+        text-align: left;
+        padding: 5px 5px 5px 10px;
+        border-bottom: 1px solid gray;
+        background-color: bisque;
+        height: 1.5em;
+        width: 15em;
+    }
+
+.info-container {
+    max-width: 39em;
+    text-align: justify;
+    font-size: 14px;
+    font-style: italic;
 }

@@ -200,6 +200,14 @@
     <Compile Include="Migrations\202001181747405_ChangedUserDataPropertiesCD.designer.cs">
       <DependentUpon>202001181747405_ChangedUserDataPropertiesCD.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001191849229_UpdatedBMRAndCPMProperties.cs" />
+    <Compile Include="Migrations\202001191849229_UpdatedBMRAndCPMProperties.designer.cs">
+      <DependentUpon>202001191849229_UpdatedBMRAndCPMProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001191947454_AddedBMIProperty.cs" />
+    <Compile Include="Migrations\202001191947454_AddedBMIProperty.designer.cs">
+      <DependentUpon>202001191947454_AddedBMIProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Product.cs" />
@@ -328,6 +336,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001181747405_ChangedUserDataPropertiesCD.resx">
       <DependentUpon>202001181747405_ChangedUserDataPropertiesCD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001191849229_UpdatedBMRAndCPMProperties.resx">
+      <DependentUpon>202001191849229_UpdatedBMRAndCPMProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001191947454_AddedBMIProperty.resx">
+      <DependentUpon>202001191947454_AddedBMIProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

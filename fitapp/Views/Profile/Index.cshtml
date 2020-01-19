@@ -1,10 +1,13 @@
 ﻿@model fitapp.ViewModels.ProfileCredentialsViewModel
+@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AppLayout.cshtml";
 }
 
-<h2>Profil Użytkownika</h2>
+<h1>Profil Użytkownika</h1>
+
+<h2 class="user-header">Moje dane:</h2>
 
 @{
     var genders = new SelectList(
@@ -12,18 +15,136 @@
         {
             new SelectListItem {Selected = true, Text = "Kobieta", Value = "Female"},
             new SelectListItem {Selected = false, Text = "Mężczyzna", Value = "Male"},
-        }, "Value", "Text");
+                                                }, "Value", "Text");
 
     var physicalActivityLevel = new SelectList(
         new List<SelectListItem>
         {
-            new SelectListItem {Selected = true, Text = "Brak", Value = "None"},
-            new SelectListItem {Selected = false, Text = "Niska aktywność", Value = "Low"},
-            new SelectListItem {Selected = false, Text = "Średnia aktywność", Value = "Medium"},
-            new SelectListItem {Selected = false, Text = "Wysoka aktywność", Value = "High"},
-            new SelectListItem {Selected = false, Text = "Bardzo wysoka aktywność", Value = "VeryHigh"},
-        }, "Value", "Text");
+            new SelectListItem {Selected = true, Text = "Brak", Value = "1,2"},
+            new SelectListItem {Selected = false, Text = "Niska aktywność", Value = "1,35"},
+            new SelectListItem {Selected = false, Text = "Średnia aktywność", Value = "1,55"},
+            new SelectListItem {Selected = false, Text = "Wysoka aktywność", Value = "1,75"},
+            new SelectListItem {Selected = false, Text = "Bardzo wysoka aktywność", Value = "2,05"},
+                                                }, "Value", "Text");
 }
+
+<div class="user-data-table-container">
+    <table class="user-data-table">
+        <tr>
+            <th>@Html.LabelFor(o => o.UserData.Email, "Email:")</th>
+            <td>@User.Identity.GetUserName()</td>
+        </tr>
+        <tr>
+            <th>@Html.LabelFor(o => o.UserData.Age, "Wiek:")</th>
+            <td>
+                @if (Model.UserData.Age == 0)
+                {
+                    <text>Nie podano</text>
+                }
+                else
+                {
+                    @Model.UserData.Age
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>@Html.LabelFor(o => o.UserData.Height, "Wzrost:")</th>
+            <td>
+                @if (Model.UserData.Height == 0)
+                {
+                    <text>Nie podano</text>
+                }
+                else
+                {
+                    @(Model.UserData.Height)<text>cm</text>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>@Html.LabelFor(o => o.UserData.Weight, "Waga:")</th>
+            <td>
+                @if (Model.UserData.Weight == 0)
+                {
+                    <text>Nie podano</text>
+                }
+                else
+                {
+                    @(Model.UserData.Weight)<text>kg</text>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>@Html.LabelFor(o => o.UserData.Gender, "Płeć:")</th>
+            <td>
+                @{ switch (Model.UserData.Gender)
+                    {
+                        case "Male":
+                            <text>Mężczyzna</text>
+                            break;
+                        case "Female":
+                            <text>Kobieta</text>
+                            break;
+                        default:
+                            <text>Nie podano</text>
+                            break;
+                    }
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>@Html.LabelFor(o => o.UserData.PhysicalActivity, "Aktywność fizyczna:")</th>
+            <td>
+                @{ switch (Model.UserData.PhysicalActivity)
+                    {
+                        case "Male":
+                            <text>Brak</text>
+                            break;
+                        case "1,35":
+                            <text>Niska</text>
+                            break;
+                        case "1,55":
+                            <text>Średnia</text>
+                            break;
+                        case "1,75":
+                            <text>Wysoka</text>
+                            break;
+                        case "2,05":
+                            <text>Bardzo wysoka</text>
+                            break;
+                        default:
+                            <text>Nie podano</text>
+                            break;
+                    }
+                }
+            </td>
+        </tr>
+        <tr>
+            <th>@Html.LabelFor(o => o.UserData.BMI, "BMI*:")</th>
+            <td>@Model.UserData.BMI</td>
+        </tr>
+        <tr>
+            <th>@Html.LabelFor(o => o.UserData.BMR, "BMR*:")</th>
+            <td>@Model.UserData.BMR</td>
+        </tr>
+        <tr>
+            <th>@Html.LabelFor(o => o.UserData.CPM, "CPM*:")</th>
+            <td>@Model.UserData.CPM</td>
+        </tr>
+    </table>
+
+    <div class="info-container">
+        <p class="info">
+            <b>*BMI</b> (ang. body mass index) - indeks masy ciała, który w sposób pośredni opisuje zawartość tkanki tłuszczowej w organizmie na
+            podstawie proporcji masy ciała mierzonej w kilogramach do wzrostu w metrach.<br />
+            <b>*PPM</b> (ang. basal metabolic rate, BMR) - wskaźnik podstawowej przemiany materii, nazywany również tempem metabolizmu podstawowego,
+            wskazuje najmniejsze dzienne zapotrzebowanie kaloryczne, dzięki któremu zachowamy podstawowe funkcje życiowe.<br />
+            <b>*CPM</b> (ang. total metabolic rate) - całodobowy wydatek energetyczny człowieka, bierze pod uwagę podstawową przemianę materii oraz
+            aktywność fizyczną.
+        </p>
+    </div>
+</div>
+
+<h2 class="user-header">Edytuj dane:</h2>
 
 @using (@Html.BeginForm("EditProfile", "Profile"))
 {
@@ -32,32 +153,27 @@
     <div class="form-container">
         <table class="form-table">
             <tr>
-                <td>@Html.LabelFor(o => o.UserData.Email, "Email:")</td>
-                <td>@Html.TextBoxFor(o => o.UserData.Email, new { Class = "textbox" })</td>
-                <td>@Html.ValidationMessageFor(o => o.UserData.Email)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(o => o.UserData.Age, "Wiek:")</td>
+                <th>@Html.LabelFor(o => o.UserData.Age, "Wiek:")</th>
                 <td>@Html.TextBoxFor(o => o.UserData.Age, new { Class = "textbox" })</td>
                 <td>@Html.ValidationMessageFor(o => o.UserData.Age)</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(o => o.UserData.Height, "Wzrost:")</td>
+                <th>@Html.LabelFor(o => o.UserData.Height, "Wzrost:")</th>
                 <td>@Html.TextBoxFor(o => o.UserData.Height, new { Class = "textbox" })</td>
                 <td>@Html.ValidationMessageFor(o => o.UserData.Height)</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(o => o.UserData.Weight, "Waga:")</td>
+                <th>@Html.LabelFor(o => o.UserData.Weight, "Waga:")</th>
                 <td>@Html.TextBoxFor(o => o.UserData.Weight, new { Class = "textbox" })</td>
                 <td>@Html.ValidationMessageFor(o => o.UserData.Weight)</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(o => o.UserData.Gender, "Płeć:")</td>
+                <th>@Html.LabelFor(o => o.UserData.Gender, "Płeć:")</th>
                 <td>@Html.DropDownListFor(o => o.UserData.Gender, genders, new { Class = "dropdown-list" }) </td>
                 <td>@Html.ValidationMessageFor(o => o.UserData.Gender)</td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(model => model.UserData.PhysicalActivity, "Aktywność fizyczna:")</td>
+                <th>@Html.LabelFor(model => model.UserData.PhysicalActivity, "Aktywność fizyczna:")</th>
                 <td>@Html.DropDownListFor(o => o.UserData.PhysicalActivity, physicalActivityLevel, new { Class = "dropdown-list" })</td>
                 <td>@Html.ValidationMessageFor(o => o.UserData.PhysicalActivity)</td>
             </tr>
@@ -70,32 +186,32 @@
     </div>
 }
 
-<h1>Zmiana hasła</h1>
+@*<h2 class="user-header">Zmiana hasła</h2>
 
-@*@using (Html.BeginForm("ChangePassword", "Profile", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="manage-error">
-            @Html.ValidationMessage("password-error", "")
-        </div>
-
-        if (Model.Message.HasValue)
+    @using (Html.BeginForm("ChangePassword", "Profile", FormMethod.Post))
         {
-            <div class="manage-message">
-                @switch (Model.Message)
-                {
-                    case fitapp.Controllers.ProfileController.ManageMessageId.ChangePasswordSuccess:
-                        @: Hasło zostało zmienione pomyślnie!
-                        break;
-                    case fitapp.Controllers.ProfileController.ManageMessageId.SetPasswordSuccess:
-                        @: Hasło zostało dodane pomyślnie!
-                        break;
-                    case fitapp.Controllers.ProfileController.ManageMessageId.Error:
-                        @: Wystąpił błąd
-                        break;
+            @Html.AntiForgeryToken()
 
-                }
+            <div class="manage-error">
+                @Html.ValidationMessage("password-error", "")
             </div>
-        }
-    }*@
+
+            if (Model.Message.HasValue)
+            {
+                <div class="manage-message">
+                    @switch (Model.Message)
+                    {
+                        case fitapp.Controllers.ProfileController.ManageMessageId.ChangePasswordSuccess:
+                            @: Hasło zostało zmienione pomyślnie!
+                            break;
+                        case fitapp.Controllers.ProfileController.ManageMessageId.SetPasswordSuccess:
+                            @: Hasło zostało dodane pomyślnie!
+                            break;
+                        case fitapp.Controllers.ProfileController.ManageMessageId.Error:
+                            @: Wystąpił błąd
+                            break;
+
+                    }
+                </div>
+            }
+        }*@

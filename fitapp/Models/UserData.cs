@@ -16,6 +16,8 @@ namespace fitapp.Models
         public double Weight { get; set; }
         public string PhysicalActivity { get; set; }
         public string Gender { get; set; }
+        public double BMI { get; set; }
         public double BMR { get; set; }
+        public double CPM { get; set; }
     }
 }
