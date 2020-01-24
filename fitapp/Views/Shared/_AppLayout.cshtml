@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/ProductsList.css")" type="text/css" />
     <link rel="stylesheet" href="@Url.Content("~/Content/Account.css")" type="text/css" />
     <link rel="stylesheet" href="@Url.Content("~/Content/Navbar.css")" type="text/css" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/Calculator.css")" type="text/css" />
     @System.Web.Optimization.Styles.Render("~/Content/themes/base/css")
 </head>
 <body>
@@ -28,8 +29,14 @@
         
         <ul id="top-menu">
             <li class="item"><a href="@Url.Action("StaticContent", "Home", new { viewname = "Index" }, null)">Baza produktów</a></li>
-            <li class="item"><a href="@Url.Action("StaticContent", "Home", new { viewname = "Kalkulator" }, null)">Kalkulator</a></li>
-            <li class="item"><a href="@Url.Action("StaticContent", "Home", new { viewname = "Dieta" }, null)">Dieta</a></li>
+            <li class="item"><a href="@Url.Action("IndexBmi", "Calculator")">Kalkulator</a>
+                <ul id="dropdown-calc-menu">
+                    <li><a href="@Url.Action("IndexBmi", "Calculator")">BMI</a></li>
+                    <li><a href="@Url.Action("IndexBmr", "Calculator")">PPM</a></li>
+                    <li><a href="@Url.Action("IndexCpm", "Calculator")">CPM</a></li>
+                </ul>
+            </li>
+            @*<li class="item"><a href="@Url.Action("StaticContent", "Home", new { viewname = "Dieta" }, null)">Dieta</a></li>*@
         </ul>
 
         <ul id="top-user-menu">
@@ -40,22 +47,13 @@
                     @Html.AntiForgeryToken()
 
                     <li>
-                        @* POPRAWIC / ZLA TRASA *@
                         @Html.ActionLink(User.Identity.GetUserName(), "Index", "Profile", routeValues: null, htmlAttributes: new { title = "Profile" })
                         <ul id="dropdown-user-menu">
-                            <li>
-                                @*@Html.ActionLink("Edytuj profil", "Index", "Profile", routeValues: null, htmlAttributes: null)*@
-                                <a href="@Url.Action("Index", "Profile")">Edytuj profil</a>
-                            </li>
+                            <li><a href="@Url.Action("Index", "Profile")">Edytuj profil</a></li>
                             <li><a href="#">Moje posiłki</a></li>
-                            <li>
-                                <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
-                            </li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a></li>
                         </ul>
                     </li>
-                    @*<li>
-                        <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
-                    </li>*@
                 }
             }
             else
@@ -73,10 +71,6 @@
     <header class="banner">
         <img src="@Url.Content("~/Content/Images/banner_v5.png")" />
     </header>
-
-    @*<div class="sidebar">
-            <p>LEWA STRONA</p>
-        </div>*@
 
     <div class="content">
         @RenderBody()

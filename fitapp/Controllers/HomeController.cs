@@ -66,6 +66,6 @@ namespace fitapp.Controllers
         public ActionResult StaticContent(string viewname)
         {
             return View(viewname);
-        }
+        } 
     }
 }

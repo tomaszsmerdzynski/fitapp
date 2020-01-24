@@ -65,11 +65,6 @@ namespace fitapp.Controllers
                 ViewData = (ViewDataDictionary)TempData["ViewData"];
             }
 
-            //if (User.IsInRole("Admin"))
-            //    ViewBag.UserIsAdmin = true;
-            //else
-            //    ViewBag.UserIsAdmin = false;
-
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
 
             if (user == null)
@@ -94,12 +89,6 @@ namespace fitapp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditProfile([Bind(Prefix = "UserData")] UserData userData)
         {
-            //var genders = new SelectList(
-            //    new List<SelectListItem>
-            //    {
-            //        new SelectListItem { Selected = true, Text = "Kobieta", Value = "Female" },
-            //        new SelectListItem { Selected = false, Text = "Mężczyzna", Value = "Male" }
-            //    }, "Text", "Value");
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());

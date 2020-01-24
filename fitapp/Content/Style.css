@@ -54,13 +54,17 @@ html, body {
     color: blanchedalmond;
 }
 
+h2 {
+    padding-bottom: 20px;
+}
+
 #search-form {
     padding: 40px 40px 40px 40px;
 }
 
     /*STYLE LINKÓW*/
 .link {
-    padding: 20px 20px 20px 20px
+    padding: 0;
 }
 
     .link a {

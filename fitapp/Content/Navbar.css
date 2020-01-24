@@ -54,6 +54,26 @@
             cursor: pointer;
         }
 
+        #top-menu li:hover #dropdown-calc-menu > li {
+            display: block;
+            top: 0px;
+        }
+
+#dropdown-calc-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+}
+
+    #dropdown-calc-menu li {
+        display: none;
+        position: relative;
+        top: 0px;
+        background-color: seagreen;
+        opacity: 0.85;
+    }
+
 #top-user-menu {
     list-style: none;
     display: flex;
@@ -93,3 +113,4 @@
         background-color: seagreen;
         opacity: 0.85;
     }
+

@@ -1,0 +1,76 @@
+﻿@model fitapp.ViewModels.CalculatorViewModel
+@{
+    ViewBag.Title = "IndexCpm";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<h2>Kalkulator CPM</h2>
+
+@{
+
+    var genders = new SelectList(
+        new List<SelectListItem>
+        {
+            new SelectListItem {Selected = true, Text = "Kobieta", Value = "Female"},
+            new SelectListItem {Selected = false, Text = "Mężczyzna", Value = "Male"},
+        }, "Value", "Text");
+
+    var physicalActivityLevel = new SelectList(
+        new List<SelectListItem>
+        {
+            new SelectListItem {Selected = true, Text = "Brak", Value = "1,2"},
+            new SelectListItem {Selected = false, Text = "Niska aktywność", Value = "1,35"},
+            new SelectListItem {Selected = false, Text = "Średnia aktywność", Value = "1,55"},
+            new SelectListItem {Selected = false, Text = "Wysoka aktywność", Value = "1,75"},
+            new SelectListItem {Selected = false, Text = "Bardzo wysoka aktywność", Value = "2,05"},
+        }, "Value", "Text");
+}
+
+<div class="calc-info">
+    Wypełnij poniższe dane aby obliczyć całkowite zapotrzebowanie kaloryczne z uwzględnieniem aktywności fizycznej:
+</div>
+
+@using (@Html.BeginForm("IndexCpm", "Calculator"))
+{
+    <div class="form-container">
+        <table class="form-table">
+            <tr>
+                <th>@Html.LabelFor(o => o.Age, "Wiek:")</th>
+                <td>@Html.TextBoxFor(o => o.Age, new { Class = "textbox" })</td>
+                <td>@Html.ValidationMessageFor(o => o.Age)</td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(o => o.Height, "Wzrost:")</th>
+                <td>@Html.TextBoxFor(o => o.Height, new { Class = "textbox" })</td>
+                <td>@Html.ValidationMessageFor(o => o.Height)</td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(o => o.Weight, "Waga:")</th>
+                <td>@Html.TextBoxFor(o => o.Weight, new { Class = "textbox" })</td>
+                <td>@Html.ValidationMessageFor(o => o.Weight)</td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(o => o.Gender, "Płeć:")</th>
+                <td>@Html.DropDownListFor(o => o.Gender, genders, new { Class = "dropdown-list" }) </td>
+                <td>@Html.ValidationMessageFor(o => o.Gender)</td>
+            </tr>
+            <tr>
+                <th>@Html.LabelFor(model => model.PhysicalActivity, "Aktywność fizyczna:")</th>
+                <td>@Html.DropDownListFor(o => o.PhysicalActivity, physicalActivityLevel, new { Class = "dropdown-list" })</td>
+                <td>@Html.ValidationMessageFor(o => o.PhysicalActivity)</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="padding: 1em 0 0 0">
+                    <input type="submit" value="Oblicz" class="calc-submit-link" />
+                </td>
+            </tr>
+        </table>
+    </div>
+}
+
+@if (Model.CPM.HasValue)
+{
+    <div class="calc-result">
+        Twoje zapotrzebowanie kaloryczne wynosi: <span class="calc-result-color">@Model.CPM<text> kcal</text></span>
+    </div>
+}

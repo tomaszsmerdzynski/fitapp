@@ -30,7 +30,7 @@
     text-decoration: none;
     height: 1.5em;
     width: 20em;
-    padding: 1em 1em 1em 1em;
+    padding: 1em 1em;
     border: 1px solid black;
     border-radius: 0.5em;
     font-family: 'Lato', sans-serif;
@@ -42,7 +42,7 @@
     text-decoration: none;
     height: 2.2em;
     width: 20em;
-    /*padding: 1em 1em 1em 1em;*/
+    padding-left: 10px;
     border: 1px solid black;
     border-radius: 0.5em;
     font-family: 'Lato', sans-serif;
